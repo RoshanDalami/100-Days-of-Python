@@ -9,7 +9,6 @@ screen.setup(width=600,height = 600)
 screen.bgcolor("black")
 screen.title("My Snake Game")
 
-
 # x=0
 # y=0
 # collection_turtle = []
@@ -28,7 +27,7 @@ screen.title("My Snake Game")
 #     new_segment.color("white")
 #     new_segment.penup()
 #     new_segment.goto(position)
-#     segments.append(new_segment)
+#     segments.append(new_segmeˀnt)
 snake = Snake()
 food = Food()
 score_board = Scoreboard()
@@ -56,8 +55,10 @@ while game_is_on :
         
     #DETECT COLLISION WITH WALL
     if snake.head.xcor() > 280 or snake.head.xcor()< -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280 :
-        game_is_on = False
-        score_board.game_over()
+        
+        score_board.reset()
+        
+        snake.reset()
 
   
     #detect collision with tail
@@ -67,8 +68,10 @@ while game_is_on :
         # if segment == snake.head :
         #     pass
         if snake.head.distance(segment) < 10:
-            game_is_on = False
-            score_board.game_over()
+            
+            score_board.reset()
+            score_board.score_reader()
+            snake.reset()
 
 
 
